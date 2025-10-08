@@ -362,7 +362,7 @@ export default function Header() {
                   Our why
                 </h4>
                 <div className="space-y-2 text-sm text-gray-600">
-                  <a href="#" className="block hover:text-orange-500">World's healthiest </a>
+                  <a href="#" className="block hover:text-orange-500">Worlds healthiest </a>
                   <a href="#" className="block hover:text-orange-500">The Founder health coalition </a>
                   <a href="#" className="block hover:text-orange-500">Privacy Policy</a>
                   <a href="#" className="block hover:text-orange-500">Informed medical consent</a>
