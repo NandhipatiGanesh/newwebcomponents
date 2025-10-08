@@ -71,13 +71,13 @@ export default function Tabs() {
   const activeData = cardData.find((c) => c.id === activeTab);
   if (!activeData) return null;
 
-  // Detect mobile
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const handleResize = () => setIsMobile(window.innerWidth < 768);
+  handleResize();
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
 
   // 👉 Handle direction-aware animation
   const handleTabChange = (newId: string) => {

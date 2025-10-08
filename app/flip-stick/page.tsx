@@ -11,7 +11,16 @@ import {
   ChevronDown,
   Sparkles,
 } from "lucide-react";
+type NavChild = {
+  title: string;
+  href: string;
+  category?: string;
+};
 
+type NavItem = {
+  title: string;
+  children?: NavChild[];
+};
 import navigation from "@/constants/nav-items";
 export default function FlipStickPage() {
   const cards = [
@@ -71,28 +80,31 @@ export default function FlipStickPage() {
     new Set(["COMPONENTS"])
   );
 
-  const groupedNavigation = [
-    {
-      title: "GETTING STARTED",
-      icon: Zap,
-      children: navigation.filter((item: any) =>
-        ["Getting Started", "Introduction", "Installation"].includes(item.title)
-      ),
-    },
-    {
-      title: "INSTALLATION GUIDE",
-      icon: Settings,
-      children:
-        navigation.find((item: any) => item.title === "Installation Guide")
-          ?.children || [],
-    },
-    {
-      title: "COMPONENTS",
-      icon: Package,
-      children:
-        navigation.find((item: any) => item.title === "Components")?.children || [],
-    },
-  ];
+// --- fix filter types ---
+const groupedNavigation = [
+  {
+    title: "GETTING STARTED",
+    icon: Zap,
+    children: navigation.filter((item: NavItem) =>
+      ["Getting Started", "Introduction", "Installation"].includes(item.title)
+    ),
+  },
+  {
+    title: "INSTALLATION GUIDE",
+    icon: Settings,
+    children:
+      navigation.find((item: NavItem) => item.title === "Installation Guide")
+        ?.children || [],
+  },
+  {
+    title: "COMPONENTS",
+    icon: Package,
+    children:
+      navigation.find((item: NavItem) => item.title === "Components")
+        ?.children || [],
+  },
+];
+
 
   const filteredItems = groupedNavigation
     .map((section) => ({

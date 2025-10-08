@@ -2,36 +2,37 @@ import CardNav from '../CardNav'
 import logo from './logo.svg';
 export default function HeroSeptember() {
 
-    const items = [
-    {
-      label: "About",
-      bgColor: "#0D0716",
-      textColor: "#fff",
-      links: [
-        { label: "Company", ariaLabel: "About Company" },
-        { label: "Careers", ariaLabel: "About Careers" }
-      ]
-    },
-    {
-      label: "Projects", 
-      bgColor: "#170D27",
-      textColor: "#fff",
-      links: [
-        { label: "Featured", ariaLabel: "Featured Projects" },
-        { label: "Case Studies", ariaLabel: "Project Case Studies" }
-      ]
-    },
-    {
-      label: "Contact",
-      bgColor: "#271E37", 
-      textColor: "#fff",
-      links: [
-        { label: "Email", ariaLabel: "Email us" },
-        { label: "Twitter", ariaLabel: "Twitter" },
-        { label: "LinkedIn", ariaLabel: "LinkedIn" }
-      ]
-    }
-  ];
+   const items = [
+  {
+    label: "About",
+    bgColor: "#0D0716",
+    textColor: "#fff",
+    links: [
+      { label: "Company", href: "/company", ariaLabel: "About Company" },
+      { label: "Careers", href: "/careers", ariaLabel: "About Careers" }
+    ]
+  },
+  {
+    label: "Projects", 
+    bgColor: "#170D27",
+    textColor: "#fff",
+    links: [
+      { label: "Featured", href: "/projects/featured", ariaLabel: "Featured Projects" },
+      { label: "Case Studies", href: "/projects/case-studies", ariaLabel: "Project Case Studies" }
+    ]
+  },
+  {
+    label: "Contact",
+    bgColor: "#271E37", 
+    textColor: "#fff",
+    links: [
+      { label: "Email", href: "mailto:info@example.com", ariaLabel: "Email us" },
+      { label: "Twitter", href: "https://twitter.com/example", ariaLabel: "Twitter" },
+      { label: "LinkedIn", href: "https://linkedin.com/company/example", ariaLabel: "LinkedIn" }
+    ]
+  }
+];
+
   return (
     <section
       className="h-screen bg-[url('/GlassyffectRedColorBg.png')] bg-cover bg-center flex items-center justify-center text-center text-white"
