@@ -356,7 +356,7 @@ export default function Header() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="absolute bottom-0 left-0 right-0 p-6 space-y-3 border-t bg-white"
+                className="fixed bottom-0 left-0 right-0 p-6 space-y-3 border-t bg-white"
               >
                 <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
                   Our why

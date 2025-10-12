@@ -16,7 +16,9 @@ type NavChild = {
   href: string;
   category?: string;
 };
-
+function isNavChild(item: unknown): item is NavChild {
+  return typeof (item as NavChild)?.href === "string";
+}
 type NavItem = {
   title: string;
   children?: NavChild[];
@@ -109,12 +111,14 @@ const groupedNavigation = [
   const filteredItems = groupedNavigation
     .map((section) => ({
       ...section,
-      children: section.children.filter(
-        (child: any) =>
-          query === "" ||
-          child.title.toLowerCase().includes(query.toLowerCase()) ||
-          section.title.toLowerCase().includes(query.toLowerCase())
-      ),
+      children: section.children
+  .filter(isNavChild) 
+  .filter(
+    (child) =>
+      query === "" ||
+      child.title.toLowerCase().includes(query.toLowerCase()) ||
+      section.title.toLowerCase().includes(query.toLowerCase())
+  ),
     }))
     .filter(
       (section) =>
@@ -228,7 +232,7 @@ const groupedNavigation = [
                     </button>
                     {expandedSections.has(section.title) && (
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 ml-4">
-                        {section.children.map((child: any, cIdx: any) => (
+                        {section.children.map((child: NavChild, cIdx: number) => (
                           <button
                             key={cIdx}
                             onClick={() => (window.location.href = child.href)}

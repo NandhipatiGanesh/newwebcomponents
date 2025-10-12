@@ -58,25 +58,30 @@ export default function Tabs() {
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   
 
-  // Update indicator position/width when activeTab changes
-  useLayoutEffect(() => {
-    const idx = cardData.findIndex((c) => c.id === activeTab);
-    const el = tabRefs.current[idx];
-    if (el) {
-      setIndicatorX(el.offsetLeft);
-      setIndicatorW(el.offsetWidth);
-    }
-  }, [activeTab]);
+// ✅ Hooks: layout first
+useLayoutEffect(() => {
+  const idx = cardData.findIndex((c) => c.id === activeTab);
+  const el = tabRefs.current[idx];
+  if (el) {
+    setIndicatorX(el.offsetLeft);
+    setIndicatorW(el.offsetWidth);
+  }
+}, [activeTab]);
 
-  const activeData = cardData.find((c) => c.id === activeTab);
-  if (!activeData) return null;
-
-  useEffect(() => {
+// ✅ Hooks: resize listener (define ONCE here)
+useEffect(() => {
   const handleResize = () => setIsMobile(window.innerWidth < 768);
   handleResize();
   window.addEventListener("resize", handleResize);
   return () => window.removeEventListener("resize", handleResize);
 }, []);
+
+// ✅ Safe: conditional return AFTER hooks
+const activeData = cardData.find((c) => c.id === activeTab);
+if (!activeData) return null;
+
+   
+
 
 
   // 👉 Handle direction-aware animation
